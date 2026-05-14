@@ -9,7 +9,7 @@
 <body>
 
     <header class="header">
-        <button class="header__btn header__btn--dict">
+        <button class="header__btn header__btn--dict" id="dictBtn">
             <img src="img/book_spread_outline_28.png" alt="словарь" class="header__btn-icon">
             Словарь
         </button>
@@ -45,7 +45,10 @@
         <div class="chat">
             <div class="chat__messages">
                 <div class="chat__bubble chat__bubble--wolf">Выберите тему</div>
-                <div class="chat__bubble chat__bubble--human"></div>
+                <div class="chat__bubble-wrap chat__bubble-wrap--human">
+                    <div class="chat__bubble chat__bubble--human"></div>
+                    <img src="img/Frame 2085663352.png" alt="user" class="chat__avatar">
+                </div>
             </div>
 
             <div class="chat__input-bar">
@@ -62,21 +65,22 @@
 
     </main>
 
-    <script>
-        function toggleDropdown() {
-            document.getElementById('dropdownList').classList.toggle('header__dropdown--open');
-        }
-        function selectTopic(el, text) {
-            document.getElementById('selectText').textContent = text;
-            document.getElementById('selectText').style.color = '#333';
-            document.getElementById('dropdownList').classList.remove('header__dropdown--open');
-        }
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.header__select-wrap')) {
-                document.getElementById('dropdownList').classList.remove('header__dropdown--open');
-            }
-        });
-    </script>
+    <div class="dict" id="dictModal">
+        <div class="dict__panel">
+            <div class="dict__header">
+                <span class="dict__title">Словарь</span>
+                <button class="dict__close" id="dictClose">✕</button>
+            </div>
+            <div class="dict__form">
+                <input class="dict__input" id="wordInput" type="text" placeholder="Слово">
+                <input class="dict__input" id="transcInput" type="text" placeholder="Транскрипция">
+                <button class="dict__add-btn" id="addWordBtn">Добавить</button>
+            </div>
+            <div class="dict__list" id="wordList"></div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
 
 </body>
 </html>

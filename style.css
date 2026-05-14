@@ -165,10 +165,27 @@ body {
     align-self: flex-start;
 }
 
+.chat__bubble-wrap--human {
+    align-self: flex-end;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 14px;
+    padding-right: 14px;
+}
+
 .chat__bubble--human {
     width: 300px;
     height: 67px;
-    align-self: flex-end;
+}
+
+.chat__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    object-fit: cover;
 }
 
 .chat__input-bar {
@@ -223,4 +240,143 @@ body {
     width: 20px;
     height: 20px;
     object-fit: contain;
+}
+
+.dict {
+    position: fixed;
+    top: 77px;
+    left: 20px;
+    z-index: 200;
+    display: none;
+}
+
+.dict--open {
+    display: block;
+}
+
+.dict__panel {
+    width: 300px;
+    background: #005EFF;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dict__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dict__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.dict__close {
+    width: 28px;
+    height: 28px;
+    background: #3284FF;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dict__form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dict__input {
+    height: 40px;
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+
+.dict__input::placeholder {
+    color: #aaa;
+}
+
+.dict__add-btn {
+    height: 40px;
+    background: #3284FF;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.dict__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.dict__list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dict__list::-webkit-scrollbar-thumb {
+    background: #3284FF;
+    border-radius: 4px;
+}
+
+.word-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.word-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.word-card__word {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.word-card__transc {
+    font-size: 12px;
+    color: #999;
+}
+
+.word-card__delete {
+    width: 24px;
+    height: 24px;
+    background: #3284FF;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
