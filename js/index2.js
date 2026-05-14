@@ -26,11 +26,10 @@ levelBtns.forEach((btn) => {
 
 langBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        if (lang === 'en') {
+        if (btn.dataset.lang === 'en') {
             window.location.href = 'index.html?level=' + selectedLevel;
         } else {
-            window.location.href = 'index2.html?level=' + selectedLevel + '&lang=' + lang;
+            window.location.href = 'index2.html?level=' + selectedLevel;
         }
     });
 });

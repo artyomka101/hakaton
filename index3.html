@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiSpeak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__logo">
+            <div class="header__logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="white"/>
+                </svg>
+            </div>
+            <span class="header__logo-text">Multi<span class="header__logo-accent">Speak</span></span>
+        </div>
+    </header>
+
+    <main class="home">
+
+        <section class="home__hero">
+            <h1 class="home__title">Учи языки играючи</h1>
+            <p class="home__subtitle">Общайся с персонажами из мультфильмов, выбирай темы и прокачивай свой язык в диалогах</p>
+        </section>
+
+        <section class="home__how">
+            <h2 class="home__section-title">Как пользоваться</h2>
+            <div class="home__steps">
+                <div class="home__step">
+                    <div class="home__step-num">1</div>
+                    <div class="home__step-text">Выбери язык и уровень сложности</div>
+                </div>
+                <div class="home__step">
+                    <div class="home__step-num">2</div>
+                    <div class="home__step-text">Выбери тему для разговора</div>
+                </div>
+                <div class="home__step">
+                    <div class="home__step-num">3</div>
+                    <div class="home__step-text">Общайся с персонажем и учи новые слова</div>
+                </div>
+                <div class="home__step">
+                    <div class="home__step-num">4</div>
+                    <div class="home__step-text">Сохраняй слова в словарик</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home__settings">
+            <h2 class="home__section-title">Настройки</h2>
+
+            <div class="home__setting-group">
+                <span class="home__setting-label">Язык</span>
+                <div class="home__options" id="langOptions">
+                    <button class="home__option home__option--active" data-lang="en">🇺🇸 Английский</button>
+                    <button class="home__option" data-lang="de">🇩🇪 Немецкий</button>
+                </div>
+            </div>
+
+            <div class="home__setting-group">
+                <span class="home__setting-label">Сложность</span>
+                <div class="home__options" id="levelOptions">
+                    <button class="home__option home__option--active" data-level="easy">Лёгкий</button>
+                    <button class="home__option" data-level="medium">Средний</button>
+                    <button class="home__option" data-level="hard">Сложный</button>
+                </div>
+            </div>
+
+            <button class="home__start-btn" id="startBtn">Начать первый диалог →</button>
+        </section>
+
+    </main>
+
+    <script src="js/home.js"></script>
+
+</body>
+</html>
