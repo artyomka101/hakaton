@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiSpeak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <button class="header__btn header__btn--dict">
+            <img src="img/book_spread_outline_28.png" alt="словарь" class="header__btn-icon">
+            Словарь
+        </button>
+
+        <div class="header__select-wrap" onclick="toggleDropdown()">
+            <div class="header__select">
+                <span class="header__select-text" id="selectText">Выберите тему</span>
+                <button class="header__select-arrow" type="button">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M3 5L7 9L11 5" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <ul class="header__dropdown" id="dropdownList">
+                <li class="header__dropdown-item" onclick="selectTopic(this, '1. Моё любимое животное')">1. Моё любимое животное</li>
+                <li class="header__dropdown-item" onclick="selectTopic(this, '2. Моя любимая еда')">2. Моя любимая еда</li>
+                <li class="header__dropdown-item" onclick="selectTopic(this, '3. Моя любимая игра')">3. Моя любимая игра</li>
+                <li class="header__dropdown-item" onclick="selectTopic(this, '4. Мой идеальный выходной')">4. Мой идеальный выходной</li>
+                <li class="header__dropdown-item" onclick="selectTopic(this, '5. Мой любимый герой')">5. Мой любимый герой</li>
+            </ul>
+        </div>
+
+        <button class="header__btn header__btn--menu">
+            <img src="img/lines_3_horizontal_left_outline_28.png" alt="меню" class="header__btn-icon">
+            Меню
+        </button>
+    </header>
+
+    <main class="main">
+
+        <img src="img/image 13.png" alt="wolf" class="main__char main__char--left">
+
+        <div class="chat">
+            <div class="chat__messages">
+                <div class="chat__bubble chat__bubble--wolf">Выберите тему</div>
+                <div class="chat__bubble chat__bubble--human"></div>
+            </div>
+
+            <div class="chat__input-bar">
+                <div class="chat__input-wrap">
+                    <input class="chat__input" type="text" placeholder="Поиск">
+                    <button class="chat__send-btn">
+                        <img src="img/↳ Icon Color.png" alt="send" class="chat__send-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img src="img/image 14.png" alt="rabbit" class="main__char main__char--right">
+
+    </main>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById('dropdownList').classList.toggle('header__dropdown--open');
+        }
+        function selectTopic(el, text) {
+            document.getElementById('selectText').textContent = text;
+            document.getElementById('selectText').style.color = '#333';
+            document.getElementById('dropdownList').classList.remove('header__dropdown--open');
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.header__select-wrap')) {
+                document.getElementById('dropdownList').classList.remove('header__dropdown--open');
+            }
+        });
+    </script>
+
+</body>
+</html>
