@@ -156,12 +156,12 @@ body {
     border-radius: 16px;
     padding: 16px 18px;
     font-size: 14px;
-    color: #aaa;
+    color: #1a1a1a;
 }
 
 .chat__bubble--wolf {
     width: 301px;
-    height: 127px;
+    min-height: 60px;
     align-self: flex-start;
 }
 
@@ -193,7 +193,7 @@ body {
 
 .chat__bubble--human {
     width: 300px;
-    height: 67px;
+    min-height: 44px;
 }
 
 .chat__avatar {

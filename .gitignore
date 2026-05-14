@@ -7,3 +7,15 @@ Thumbs.db
 # Папки IDE/редакторов
 .idea/
 .vscode/
+
+# Node
+node_modules/
+.env
+
+# .NET build output
+Router/Router/bin/
+Router/Router/obj/
+Router/.vs/
+
+# Секреты
+Router/Router/appsettings.json
