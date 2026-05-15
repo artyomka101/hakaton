@@ -17,12 +17,7 @@ let selectedLevel = urlParams.get('level') || 'easy';
 let chatStarted = false;
 let loadingMsg = null;
 
-levelBtns.forEach((btn) => {
-    if (btn.dataset.level === selectedLevel) {
-        levelBtns.forEach((b) => b.classList.remove('menu__level--active'));
-        btn.classList.add('menu__level--active');
-    }
-});
+setActiveByData(levelBtns, 'menu__level--active', 'level', selectedLevel);
 
 menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -33,13 +28,8 @@ menuClose.addEventListener('click', () => {
     menuPanel.classList.remove('menu--open');
 });
 
-levelBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        levelBtns.forEach((b) => b.classList.remove('menu__level--active'));
-        btn.classList.add('menu__level--active');
-        selectedLevel = btn.dataset.level;
-    });
+bindToggleGroup(levelBtns, 'menu__level--active', (btn) => {
+    selectedLevel = btn.dataset.level;
 });
 
 langBtns.forEach((btn) => {
