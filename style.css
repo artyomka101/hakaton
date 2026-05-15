@@ -393,6 +393,22 @@ body {
     cursor: pointer;
 }
 
+.dict__compare-btn {
+    height: 40px;
+    background: #fff;
+    color: #005EFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.dict__compare-btn:hover {
+    background: #f0f4ff;
+}
+
 .dict__list {
     display: flex;
     flex-direction: column;
@@ -816,48 +832,45 @@ body {
 
 /* index2 — немецкий (макет: ИИ справа, пользователь слева) */
 .main2 {
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 588px) 1fr;
+    align-items: end;
+    justify-items: center;
+    column-gap: 28px;
+    padding: 0 16px;
     min-height: 0;
 }
 
 .main2__char {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     z-index: 1;
-    height: clamp(260px, 54vh, 500px);
-    width: auto;
-    max-width: min(30vw, 320px);
+    width: 100%;
+    max-width: min(32vw, 300px);
+    height: auto;
+    max-height: min(52vh, 480px);
     object-fit: contain;
     object-position: bottom center;
+    align-self: end;
     pointer-events: none;
 }
 
 .main2__char--left {
-    left: clamp(0px, 2vw, 24px);
+    justify-self: end;
+    margin-right: 16px;
 }
 
 .main2__char--right {
-    right: clamp(0px, 2vw, 24px);
-}
-
-@media (min-width: 1100px) {
-    .main2__char--left {
-        left: calc(50% - 520px);
-    }
-
-    .main2__char--right {
-        right: calc(50% - 520px);
-    }
+    justify-self: start;
+    margin-left: 16px;
 }
 
 .main2 .chat {
+    grid-column: 2;
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
+    max-width: 588px;
+    margin: 0;
     padding-top: 20px;
 }
 
@@ -1038,6 +1051,89 @@ body {
     }
 }
 
+.start-menu {
+    width: 100%;
+    max-width: 600px;
+}
+
+.start-menu__panel {
+    background: #005EFF;
+    border-radius: 20px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+}
+
+.start-menu__row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.start-menu__label {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.start-menu__hint {
+    margin: -4px 0 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.guide__note strong {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+}
+
+.start-menu__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.start-menu__btn {
+    height: 40px;
+    padding: 0 18px;
+    background: #3284FF;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.start-menu__btn--active {
+    opacity: 1;
+    background: #fff;
+    color: #005EFF;
+}
+
+.start-menu__start {
+    margin-top: 4px;
+    height: 52px;
+    background: #fff;
+    color: #005EFF;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.start-menu__start:hover {
+    background: #f0f4ff;
+    transform: translateY(-1px);
+}
+
 /* Главный экран приветствия (index1) */
 .welcome-page {
     overflow: hidden;
@@ -1119,4 +1215,162 @@ body {
 .welcome__btn:hover {
     background: #f0f4ff;
     transform: translateY(-2px);
+}
+
+/* Страница сравнения словарей (dict-compare.html) */
+.dict-page-body {
+    overflow-y: auto;
+}
+
+.dict-page__header {
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.dict-page__back {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 14px;
+    background: #3284FF;
+    border-radius: 10px;
+    transition: background 0.15s ease;
+}
+
+.dict-page__back:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dict-page__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.dict-page {
+    flex: 1;
+    padding: 24px 20px 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.dict-page__intro {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.dict-page__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.dict-page__col {
+    background: #005EFF;
+    border-radius: 20px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 200px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.dict-page__col-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dict-page__flag {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.dict-page__col-title {
+    margin: 0;
+    flex: 1;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.dict-page__count {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    background: #3284FF;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dict-page__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+}
+
+.dict-page__list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dict-page__list::-webkit-scrollbar-thumb {
+    background: #3284FF;
+    border-radius: 4px;
+}
+
+.dict-page__card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dict-page__word {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.dict-page__transc {
+    font-size: 13px;
+    color: #888;
+}
+
+.dict-page__empty {
+    margin: 0;
+    padding: 24px 12px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 640px) {
+    .dict-page__columns {
+        grid-template-columns: 1fr;
+    }
+
+    .dict-page__list {
+        max-height: 280px;
+    }
 }

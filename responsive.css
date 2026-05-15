@@ -72,24 +72,22 @@
 
     /* index2 — немецкий */
     .main2 {
-        position: relative;
-        overflow: hidden;
+        grid-template-columns: 1fr minmax(240px, 1fr) 1fr;
+        column-gap: 12px;
+        padding: 0 8px;
+    }
+
+    .main2__char {
+        max-width: min(36vw, 260px);
+        max-height: 45vh;
     }
 
     .main2__char--left {
-        position: absolute;
-        left: -10px;
-        bottom: 0;
-        height: 50vw;
-        max-height: 340px;
+        margin-right: 4px;
     }
 
     .main2__char--right {
-        position: absolute;
-        right: -10px;
-        bottom: 0;
-        height: 50vw;
-        max-height: 340px;
+        margin-left: 4px;
     }
 
     .main2 .chat {
@@ -154,12 +152,25 @@
     .home__option { height: 38px; padding: 0 16px; font-size: 13px; }
     .home__start-btn { height: 48px; font-size: 15px; }
 
-    .main2__char--left { display: none; }
+    .main2 {
+        grid-template-columns: 1fr;
+    }
+
+    .main2__char--left {
+        display: none;
+    }
 
     .main2__char--right {
-        height: 40vw;
+        grid-column: 1;
+        justify-self: end;
+        max-width: 55vw;
         max-height: 200px;
-        bottom: 80px;
+        margin-right: 8px;
+    }
+
+    .main2 .chat {
+        grid-column: 1;
+        grid-row: 1;
     }
 
     .main2 .chat__bubble--wolf {

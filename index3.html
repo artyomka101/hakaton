@@ -19,8 +19,8 @@
                 <li class="guide__step">
                     <span class="guide__step-num">1</span>
                     <div class="guide__step-body">
-                        <strong>Настрой занятие</strong>
-                        <p>Выбери язык и уровень сложности ниже, затем нажми «Начать первый диалог».</p>
+                        <strong>Выбери в меню</strong>
+                        <p>Внизу страницы открой меню: язык, сложность — и нажми «Начать первый диалог».</p>
                     </div>
                 </li>
                 <li class="guide__step">
@@ -67,6 +67,7 @@
                     <div class="guide__step-body">
                         <strong>Собирай словарик</strong>
                         <p>Кнопка «Словарь» в чате — сохраняй новые слова с транскрипцией, чтобы повторять их позже.</p>
+                        <p class="guide__note">У каждого языка <strong>свой словарик</strong>: слова из английского чата не смешиваются с немецким. Кнопка <strong>«Оба словаря →»</strong> откроет страницу с двумя столбцами — английский и немецкий рядом.</p>
                     </div>
                 </li>
                 <li class="guide__step">
@@ -86,8 +87,8 @@
                 </div>
                 <div class="guide__card">
                     <span class="guide__card-icon">📖</span>
-                    <span class="guide__card-title">Свой словарь</span>
-                    <span class="guide__card-text">Сохраняй слова прямо во время диалога</span>
+                    <span class="guide__card-title">Словарь по языкам</span>
+                    <span class="guide__card-text">🇺🇸 и 🇩🇪 — отдельные списки слов, каждый хранится сам по себе</span>
                 </div>
                 <div class="guide__card">
                     <span class="guide__card-icon">✨</span>
@@ -97,28 +98,29 @@
             </div>
         </section>
 
-        <section class="home__settings">
-            <h2 class="home__section-title">Настройки</h2>
-
-            <div class="home__setting-group">
-                <span class="home__setting-label">Язык</span>
-                <div class="home__options" id="langOptions">
-                    <button class="home__option home__option--active" data-lang="en">🇺🇸 Английский</button>
-                    <button class="home__option" data-lang="de">🇩🇪 Немецкий</button>
+        <nav class="start-menu" aria-label="Меню выбора">
+            <div class="start-menu__panel">
+                <div class="start-menu__row">
+                    <span class="start-menu__label">Язык</span>
+                    <p class="start-menu__hint">Для каждого языка — свой чат и свой словарик</p>
+                    <div class="start-menu__options" id="langOptions">
+                        <button type="button" class="start-menu__btn start-menu__btn--active" data-lang="en">🇺🇸 Английский</button>
+                        <button type="button" class="start-menu__btn" data-lang="de">🇩🇪 Немецкий</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="home__setting-group">
-                <span class="home__setting-label">Сложность</span>
-                <div class="home__options" id="levelOptions">
-                    <button class="home__option home__option--active" data-level="easy">Лёгкий</button>
-                    <button class="home__option" data-level="medium">Средний</button>
-                    <button class="home__option" data-level="hard">Сложный</button>
+                <div class="start-menu__row">
+                    <span class="start-menu__label">Сложность</span>
+                    <div class="start-menu__options" id="levelOptions">
+                        <button type="button" class="start-menu__btn start-menu__btn--active" data-level="easy">Лёгкий</button>
+                        <button type="button" class="start-menu__btn" data-level="medium">Средний</button>
+                        <button type="button" class="start-menu__btn" data-level="hard">Сложный</button>
+                    </div>
                 </div>
-            </div>
 
-            <button class="home__start-btn" id="startBtn">Начать первый диалог →</button>
-        </section>
+                <button type="button" class="start-menu__start" id="startBtn">Начать первый диалог →</button>
+            </div>
+        </nav>
 
     </main>
 

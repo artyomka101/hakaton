@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiSpeak — Словари</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body class="dict-page-body">
+
+    <header class="header dict-page__header">
+        <a class="dict-page__back" id="backLink" href="index.html">← Назад в чат</a>
+        <h1 class="dict-page__title">Мои словари</h1>
+    </header>
+
+    <main class="dict-page">
+        <p class="dict-page__intro">Слова из английского и немецкого чатов хранятся отдельно — здесь можно посмотреть оба списка рядом.</p>
+
+        <div class="dict-page__columns">
+            <section class="dict-page__col">
+                <div class="dict-page__col-head">
+                    <span class="dict-page__flag">🇺🇸</span>
+                    <h2 class="dict-page__col-title">Английский</h2>
+                    <span class="dict-page__count" id="countEn">0</span>
+                </div>
+                <div class="dict-page__list" id="listEn"></div>
+            </section>
+
+            <section class="dict-page__col">
+                <div class="dict-page__col-head">
+                    <span class="dict-page__flag">🇩🇪</span>
+                    <h2 class="dict-page__col-title">Немецкий</h2>
+                    <span class="dict-page__count" id="countDe">0</span>
+                </div>
+                <div class="dict-page__list" id="listDe"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/dict-compare.js"></script>
+
+</body>
+</html>

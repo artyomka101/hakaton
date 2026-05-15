@@ -21,6 +21,14 @@ dictClose.addEventListener('click', () => {
     dictModal.classList.remove('dict--open');
 });
 
+const dictCompareBtn = document.getElementById('dictCompareBtn');
+if (dictCompareBtn) {
+    dictCompareBtn.addEventListener('click', () => {
+        sessionStorage.setItem('dictCompareBack', window.location.pathname.split('/').pop() || 'index.html');
+        window.location.href = 'dict-compare.html';
+    });
+}
+
 addWordBtn.addEventListener('click', () => {
     const word = wordInput.value.trim();
     const transc = transcInput.value.trim();

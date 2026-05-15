@@ -1,5 +1,5 @@
-const langOptions = document.querySelectorAll('#langOptions .home__option');
-const levelOptions = document.querySelectorAll('#levelOptions .home__option');
+const langOptions = document.querySelectorAll('#langOptions .start-menu__btn');
+const levelOptions = document.querySelectorAll('#levelOptions .start-menu__btn');
 const startBtn = document.getElementById('startBtn');
 
 let selectedLang = 'en';
@@ -7,16 +7,16 @@ let selectedLevel = 'easy';
 
 langOptions.forEach((btn) => {
     btn.addEventListener('click', () => {
-        langOptions.forEach((b) => b.classList.remove('home__option--active'));
-        btn.classList.add('home__option--active');
+        langOptions.forEach((b) => b.classList.remove('start-menu__btn--active'));
+        btn.classList.add('start-menu__btn--active');
         selectedLang = btn.dataset.lang;
     });
 });
 
 levelOptions.forEach((btn) => {
     btn.addEventListener('click', () => {
-        levelOptions.forEach((b) => b.classList.remove('home__option--active'));
-        btn.classList.add('home__option--active');
+        levelOptions.forEach((b) => b.classList.remove('start-menu__btn--active'));
+        btn.classList.add('start-menu__btn--active');
         selectedLevel = btn.dataset.level;
     });
 });
