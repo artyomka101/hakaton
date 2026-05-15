@@ -6,7 +6,10 @@ const transcInput = document.getElementById('transcInput');
 const addWordBtn = document.getElementById('addWordBtn');
 const wordList = document.getElementById('wordList');
 
-let words = JSON.parse(localStorage.getItem('dictWords')) || [];
+const pageLang = document.documentElement.dataset.lang || 'en';
+const storageKey = 'dictWords_' + pageLang;
+
+let words = JSON.parse(localStorage.getItem(storageKey)) || [];
 
 dictBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -67,7 +70,7 @@ const renderWords = () => {
 };
 
 const saveWords = () => {
-    localStorage.setItem('dictWords', JSON.stringify(words));
+    localStorage.setItem(storageKey, JSON.stringify(words));
 };
 
 document.addEventListener('click', (e) => {

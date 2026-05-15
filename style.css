@@ -145,10 +145,11 @@ body {
 }
 
 .chat__messages {
+    margin-top: 100px;
     width: 588px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 24px;
 }
 
 .chat__bubble {
@@ -163,6 +164,7 @@ body {
     width: 301px;
     min-height: 60px;
     align-self: flex-start;
+    border-radius: 16px 16px 16px 4px;
 }
 
 .chat__bubble-wrap--wolf {
@@ -194,6 +196,7 @@ body {
 .chat__bubble--human {
     width: 300px;
     min-height: 44px;
+    border-radius: 16px 16px 4px 16px;
 }
 
 .chat__avatar {
@@ -579,6 +582,7 @@ body {
 
 .chat__msg--right {
     align-self: flex-end;
+    padding: 16px 16px 4px 16px;
 }
 
 .chat__msg--left {
@@ -586,8 +590,8 @@ body {
 }
 
 .chat__msg-avatar {
-    width: 72px;
-    height: 72px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -729,4 +733,8 @@ body {
 
 .home__start-btn:hover {
     background: #f0f4ff;
+}
+
+.chat__msg--left .chat__bubble {
+    border-radius: 16px 16px 16px 4px;
 }
