@@ -134,8 +134,8 @@ body {
     align-self: flex-end;
 }
 
-.main__char--left  { margin-left: -20px; }
-.main__char--right { margin-right: -20px; }
+.main__char--left  { margin-left: -115px; }
+.main__char--right { margin-right: 10px; }
 
 .chat {
     flex: 1;
