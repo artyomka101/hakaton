@@ -2,7 +2,6 @@
 using Router.Repositories.Models;
 using System.Net.Http.Headers;
 using Router.Repositories.Interfaces;
-using Router.Repositories.Models;
 using Router.Settings;
 
 namespace Router.Repositories.Implementations
@@ -50,7 +49,7 @@ namespace Router.Repositories.Implementations
             if (body?.Choices != null && body.Choices.Length > 0)
             {
                 var content = body.Choices[0].Message.Content;
-                _logger.LogInformation($"Gjkexty jndtn jn API {content}");
+                _logger.LogInformation("Получен ответ от API: {Content}", content);
                 _history.Add(new OpenApiResponse.Message { Content = content, Role = "assistant" });
                 return content;
             }

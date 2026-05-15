@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Router.Repositories.Models;
 using Router.Repositories.Interfaces;
-using Router.Repositories.Models;
 
 namespace Router.Controllers
 {

@@ -5,22 +5,27 @@ namespace Router.Repositories.Implementations
     public class ChatService(ISettingsRepository settingsRepository, IChatApiClient chatApiClient) : IChatService
     {
         private static int _messageCount = 0;
-        private const int max_messages = 1;
+        /// <summary>После стольких ответов пользователя — итоговый анализ.</summary>
+        private const int MaxUserMessages = 3;
 
         public async Task<string> SendMessage(string message)
         {
-            if (_messageCount == max_messages)
+            _messageCount++;
+
+            if (_messageCount >= MaxUserMessages)
             {
                 var endPrompt = await EndChat();
                 return await chatApiClient.SendMessageAsync(endPrompt);
             }
-            _messageCount++;
+
             return await chatApiClient.SendMessageAsync(message);
         }
 
+        public static void ResetMessageCount() => _messageCount = 0;
+
         public async Task<string> StartChat()
         {
-            _messageCount = 0;
+            ResetMessageCount();
             await chatApiClient.ClearHistoryAsync();
             var startPrompt = await CreatePrompt();
             return await chatApiClient.SendMessageAsync(startPrompt);
@@ -53,7 +58,7 @@ namespace Router.Repositories.Implementations
 ## Данные от пользователя (вставь их перед отправкой промпта)
 Язык: {settings.Language}
 Тема диалога: {settings.Topic}
-Сложность: {settings.Сomplexity}
+Сложность: {settings.Complexity}
 
 ## Твоя роль
         Ты начинаешь диалог на указанном языке строго на заданную тему.Ты говоришь с ребёнком, поэтому твои фразы должны быть:

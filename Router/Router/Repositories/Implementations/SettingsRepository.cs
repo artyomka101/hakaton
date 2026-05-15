@@ -7,6 +7,7 @@ namespace Router.Repositories.Implementations
     public class SettingsRepository: ISettingsRepository
     {
         private SettingsDto _settings = new SettingsDto();
+
         public async Task<SettingsDto> GetSettingsAsync()
         {
             return await Task.FromResult(_settings);
@@ -15,6 +16,7 @@ namespace Router.Repositories.Implementations
         public Task SetSettingsAsync(SettingsDto settingsDto)
         {
             _settings = settingsDto;
+            ChatService.ResetMessageCount();
             return Task.CompletedTask;
         }
     }

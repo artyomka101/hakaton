@@ -5,15 +5,24 @@ const levelBtns = document.querySelectorAll('.menu__level');
 const langBtns = document.querySelectorAll('.menu__lang');
 const sendBtn = document.querySelector('.chat__send-btn');
 const inputField = document.querySelector('.chat__input');
-const wolfBubble = document.querySelector('.chat__bubble--wolf');
-const humanBubble = document.querySelector('.chat__bubble--human');
+const chatMessages = document.getElementById('chatMessages');
 
 const PAGE_LANG = document.documentElement.dataset.lang || 'en';
-const complexityMap = { easy: 'Легко', medium: 'Средний', hard: 'Сложно' };
+const IS_DE_LAYOUT = Boolean(document.querySelector('.main2'));
+const complexityMap = { easy: 'Лёгкий', medium: 'Средний', hard: 'Сложный' };
 const greetings = { en: 'Привет! Давай поговорим.', de: 'Hallo! Lass uns reden.' };
 
-let selectedLevel = 'easy';
+const urlParams = new URLSearchParams(window.location.search);
+let selectedLevel = urlParams.get('level') || 'easy';
 let chatStarted = false;
+let loadingMsg = null;
+
+levelBtns.forEach((btn) => {
+    if (btn.dataset.level === selectedLevel) {
+        levelBtns.forEach((b) => b.classList.remove('menu__level--active'));
+        btn.classList.add('menu__level--active');
+    }
+});
 
 menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -40,12 +49,75 @@ langBtns.forEach((btn) => {
     });
 });
 
-const setWolfText = (text) => { wolfBubble.textContent = text; };
+const scrollChat = () => {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+};
+
+const createAiAvatar = () => {
+    const img = document.createElement('img');
+    img.className = 'chat__msg-avatar chat__msg-avatar--wolf';
+    img.alt = '';
+    if (IS_DE_LAYOUT) {
+        img.src = 'img/Mask group.png';
+    } else {
+        img.src = 'img/Frame 2085663348.png';
+        img.onerror = () => { img.onerror = null; img.src = 'img/Mask group.png'; };
+    }
+    return img;
+};
+
+const createUserAvatar = () => {
+    const wrap = document.createElement('div');
+    wrap.className = 'chat__msg-avatar chat__msg-avatar--user';
+    wrap.setAttribute('aria-hidden', 'true');
+    wrap.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="white"/></svg>';
+    return wrap;
+};
+
+const createBubble = (role, text) => {
+    const bubble = document.createElement('div');
+    bubble.className = role === 'ai' ? 'chat__bubble chat__bubble--wolf' : 'chat__bubble chat__bubble--human';
+    bubble.textContent = text;
+    return bubble;
+};
+
+const appendMessage = (role, text) => {
+    const msg = document.createElement('div');
+    const aiSide = IS_DE_LAYOUT ? 'right' : 'left';
+    const userSide = IS_DE_LAYOUT ? 'left' : 'right';
+    const side = role === 'ai' ? aiSide : userSide;
+    msg.className = `chat__msg chat__msg--${side}`;
+
+    const bubble = createBubble(role, text);
+    const avatar = role === 'ai' ? createAiAvatar() : createUserAvatar();
+
+    if (side === 'left') {
+        msg.append(avatar, bubble);
+    } else {
+        msg.append(bubble, avatar);
+    }
+
+    chatMessages.appendChild(msg);
+    scrollChat();
+    return msg;
+};
+
+const clearHint = () => {
+    chatMessages.querySelector('.chat__msg--hint')?.remove();
+};
 
 const setLoading = (loading) => {
     sendBtn.disabled = loading;
     inputField.disabled = loading;
-    if (loading) setWolfText('...');
+    inputField.placeholder = loading ? '...' : 'Поиск';
+
+    if (loading) {
+        loadingMsg = appendMessage('ai', '...');
+        loadingMsg.classList.add('chat__msg--loading');
+    } else if (loadingMsg) {
+        loadingMsg.remove();
+        loadingMsg = null;
+    }
 };
 
 const initChat = async (topic) => {
@@ -53,10 +125,12 @@ const initChat = async (topic) => {
     try {
         await sendSettings(PAGE_LANG, topic, complexityMap[selectedLevel]);
         const result = await startChat();
-        setWolfText(result || greetings[PAGE_LANG]);
+        clearHint();
+        appendMessage('ai', result || greetings[PAGE_LANG]);
         chatStarted = true;
     } catch {
-        setWolfText('Не удалось подключиться к серверу.');
+        if (!chatStarted) clearHint();
+        appendMessage('ai', 'Не удалось подключиться к серверу.');
     }
     setLoading(false);
 };
@@ -65,12 +139,12 @@ const handleSend = async () => {
     const text = inputField.value.trim();
     if (!text || !chatStarted) return;
     inputField.value = '';
-    humanBubble.textContent = text;
+    appendMessage('user', text);
     setLoading(true);
     try {
-        setWolfText(await sendMessage(text));
+        appendMessage('ai', await sendMessage(text));
     } catch {
-        setWolfText('Ошибка соединения.');
+        appendMessage('ai', 'Ошибка соединения.');
     }
     setLoading(false);
 };

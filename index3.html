@@ -3,48 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiSpeak</title>
+    <title>MultiSpeak — Как пользоваться</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
 </head>
-<body>
+<body class="guide-page">
 
-    <header class="header">
-        <div class="header__logo">
-            <div class="header__logo-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="white"/>
-                </svg>
-            </div>
-            <span class="header__logo-text">Multi<span class="header__logo-accent">Speak</span></span>
-        </div>
-    </header>
+    <main class="home home--guide">
 
-    <main class="home">
+        <section class="guide">
+            <h1 class="guide__title">Как пользоваться</h1>
+            <p class="guide__intro">MultiSpeak — это диалог с персонажем на английском или немецком. Во время разговора можно спрашивать помощь на русском — нейросеть объяснит и подскажет.</p>
 
-        <section class="home__hero">
-            <h1 class="home__title">Учи языки играючи</h1>
-            <p class="home__subtitle">Общайся с персонажами из мультфильмов, выбирай темы и прокачивай свой язык в диалогах</p>
-        </section>
+            <ol class="guide__steps">
+                <li class="guide__step">
+                    <span class="guide__step-num">1</span>
+                    <div class="guide__step-body">
+                        <strong>Настрой занятие</strong>
+                        <p>Выбери язык и уровень сложности ниже, затем нажми «Начать первый диалог».</p>
+                    </div>
+                </li>
+                <li class="guide__step">
+                    <span class="guide__step-num">2</span>
+                    <div class="guide__step-body">
+                        <strong>Выбери тему</strong>
+                        <p>В чате открой список тем — например, «любимое животное» или «идеальный выходной».</p>
+                    </div>
+                </li>
+                <li class="guide__step">
+                    <span class="guide__step-num">3</span>
+                    <div class="guide__step-body">
+                        <strong>Общайся с персонажем</strong>
+                        <p>Отвечай на изучаемом языке короткими фразами. Персонаж задаёт вопросы, хвалит и ведёт разговор по теме.</p>
+                    </div>
+                </li>
+                <li class="guide__step">
+                    <span class="guide__step-num">4</span>
+                    <div class="guide__step-body">
+                        <strong>Спроси на русском — получишь объяснение</strong>
+                        <p>Не понял слово или фразу? Напиши по-русски, например:</p>
+                        <ul class="guide__examples">
+                            <li>«что значит <em>hello</em>?»</li>
+                            <li>«объясни это предложение»</li>
+                            <li>«как сказать „мне нравится кошки“?»</li>
+                        </ul>
+                        <p class="guide__note">Нейросеть ответит по-русски простыми словами и поможет продолжить диалог.</p>
+                    </div>
+                </li>
+                <li class="guide__step">
+                    <span class="guide__step-num">5</span>
+                    <div class="guide__step-body">
+                        <strong>Проверь себя</strong>
+                        <p>Когда захочешь разбор речи, напиши:</p>
+                        <ul class="guide__examples">
+                            <li>«покажи ошибки»</li>
+                            <li>«что неправильно»</li>
+                            <li>«исправь меня»</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="guide__step">
+                    <span class="guide__step-num">6</span>
+                    <div class="guide__step-body">
+                        <strong>Собирай словарик</strong>
+                        <p>Кнопка «Словарь» в чате — сохраняй новые слова с транскрипцией, чтобы повторять их позже.</p>
+                    </div>
+                </li>
+                <li class="guide__step">
+                    <span class="guide__step-num">7</span>
+                    <div class="guide__step-body">
+                        <strong>Итог занятия</strong>
+                        <p>После нескольких сообщений персонаж подведёт итог: похвалит, покажет частые ошибки, даст полезные слова и попрощается на изучаемом языке.</p>
+                    </div>
+                </li>
+            </ol>
 
-        <section class="home__how">
-            <h2 class="home__section-title">Как пользоваться</h2>
-            <div class="home__steps">
-                <div class="home__step">
-                    <div class="home__step-num">1</div>
-                    <div class="home__step-text">Выбери язык и уровень сложности</div>
+            <div class="guide__cards">
+                <div class="guide__card">
+                    <span class="guide__card-icon">💬</span>
+                    <span class="guide__card-title">Помощь на русском</span>
+                    <span class="guide__card-text">Спроси в любой момент — объяснит слова и фразы</span>
                 </div>
-                <div class="home__step">
-                    <div class="home__step-num">2</div>
-                    <div class="home__step-text">Выбери тему для разговора</div>
+                <div class="guide__card">
+                    <span class="guide__card-icon">📖</span>
+                    <span class="guide__card-title">Свой словарь</span>
+                    <span class="guide__card-text">Сохраняй слова прямо во время диалога</span>
                 </div>
-                <div class="home__step">
-                    <div class="home__step-num">3</div>
-                    <div class="home__step-text">Общайся с персонажем и учи новые слова</div>
-                </div>
-                <div class="home__step">
-                    <div class="home__step-num">4</div>
-                    <div class="home__step-text">Сохраняй слова в словарик</div>
+                <div class="guide__card">
+                    <span class="guide__card-icon">✨</span>
+                    <span class="guide__card-title">Итог урока</span>
+                    <span class="guide__card-text">Краткий разбор и советы в конце беседы</span>
                 </div>
             </div>
         </section>
