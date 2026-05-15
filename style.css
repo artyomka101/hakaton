@@ -295,7 +295,8 @@ body {
     color: #fff;
 }
 
-.dict__close {
+.dict__close,
+.menu__close {
     width: 28px;
     height: 28px;
     background: #3284FF;
@@ -434,20 +435,6 @@ body {
     color: #fff;
 }
 
-.menu__close {
-    width: 28px;
-    height: 28px;
-    background: #3284FF;
-    border: none;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 13px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .menu__section {
     display: flex;
     flex-direction: column;
@@ -519,52 +506,7 @@ body {
     color: #005EFF;
 }
 
-.main__char-placeholder {
-    width: 200px;
-    flex-shrink: 0;
-}
 
-.main__char--de {
-    height: 70vh;
-}
-
-.chat__bubble-wrap--top {
-    align-self: flex-end;
-    position: relative;
-    display: inline-flex;
-    align-items: flex-end;
-    gap: 8px;
-    padding-bottom: 24px;
-}
-
-.chat__bubble-wrap--bottom {
-    align-self: flex-start;
-    position: relative;
-    display: inline-flex;
-    align-items: flex-end;
-    gap: 8px;
-    padding-bottom: 24px;
-}
-
-.chat__avatar--right {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.chat__avatar--left {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.header__btn--back {
-    width: 110px;
-}
 
 .header__logo {
     font-size: 22px;

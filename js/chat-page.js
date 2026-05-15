@@ -6,11 +6,14 @@ const langBtns = document.querySelectorAll('.menu__lang');
 const sendBtn = document.querySelector('.chat__send-btn');
 const inputField = document.querySelector('.chat__input');
 const wolfBubble = document.querySelector('.chat__bubble--wolf');
+const humanBubble = document.querySelector('.chat__bubble--human');
+
+const PAGE_LANG = document.documentElement.dataset.lang || 'en';
+const complexityMap = { easy: 'Легко', medium: 'Средний', hard: 'Сложно' };
+const greetings = { en: 'Привет! Давай поговорим.', de: 'Hallo! Lass uns reden.' };
 
 let selectedLevel = 'easy';
 let chatStarted = false;
-
-const complexityMap = { easy: 'Легко', medium: 'Средний', hard: 'Сложно' };
 
 menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -32,40 +35,31 @@ levelBtns.forEach((btn) => {
 
 langBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        if (btn.dataset.lang === 'en') {
-            window.location.href = 'index.html?level=' + selectedLevel;
-        } else {
-            window.location.href = 'index2.html?level=' + selectedLevel;
-        }
+        const dest = btn.dataset.lang === 'en' ? 'index.html' : 'index2.html';
+        window.location.href = dest + '?level=' + selectedLevel;
     });
 });
 
-const setWolfText = (text) => {
-    wolfBubble.textContent = text;
-};
+const setWolfText = (text) => { wolfBubble.textContent = text; };
 
 const setLoading = (loading) => {
     sendBtn.disabled = loading;
     inputField.disabled = loading;
-    if (loading) {
-        setWolfText('...');
-    }
+    if (loading) setWolfText('...');
 };
 
 const initChat = async (topic) => {
     setLoading(true);
     try {
-        await sendSettings('en', topic, complexityMap[selectedLevel]);
+        await sendSettings(PAGE_LANG, topic, complexityMap[selectedLevel]);
         const result = await startChat();
-        setWolfText(result.answer || result.message || 'Привет! Давай поговорим.');
+        setWolfText(result || greetings[PAGE_LANG]);
         chatStarted = true;
-    } catch (err) {
+    } catch {
         setWolfText('Не удалось подключиться к серверу.');
     }
     setLoading(false);
 };
-
-const humanBubble = document.querySelector('.chat__bubble--human');
 
 const handleSend = async () => {
     const text = inputField.value.trim();
@@ -74,19 +68,15 @@ const handleSend = async () => {
     humanBubble.textContent = text;
     setLoading(true);
     try {
-        const answer = await sendMessage(text);
-        setWolfText(answer);
-    } catch (err) {
+        setWolfText(await sendMessage(text));
+    } catch {
         setWolfText('Ошибка соединения.');
     }
     setLoading(false);
 };
 
 sendBtn.addEventListener('click', handleSend);
-
-inputField.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') handleSend();
-});
+inputField.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSend(); });
 
 function toggleDropdown() {
     document.getElementById('dropdownList').classList.toggle('header__dropdown--open');
