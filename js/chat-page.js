@@ -67,7 +67,7 @@ const createUserAvatar = () => {
 const createBubble = (role, text) => {
     const bubble = document.createElement('div');
     bubble.className = role === 'ai' ? 'chat__bubble chat__bubble--wolf' : 'chat__bubble chat__bubble--human';
-    bubble.textContent = text;
+    bubble.textContent = role === 'ai' ? cleanAiText(text) : text;
     return bubble;
 };
 

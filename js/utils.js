@@ -1,4 +1,14 @@
 /** Кнопки-переключатели: одна активная */
+/** Убрать *, ** из ответа ИИ */
+function cleanAiText(text) {
+    if (!text) return text;
+    return String(text)
+        .replace(/\*\*([^*]*)\*\*/g, '$1')
+        .replace(/\*([^*]*)\*/g, '$1')
+        .replace(/\*\*/g, '')
+        .replace(/\*/g, '');
+}
+
 function bindToggleGroup(buttons, activeClass, onSelect) {
     buttons.forEach((btn) => {
         btn.addEventListener('click', (e) => {

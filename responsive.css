@@ -1,5 +1,5 @@
-/* ── TABLET: 768px ── */
-@media (max-width: 768px) {
+/* ── Планшет и телефон (чаты EN + DE) ── */
+@media (max-width: 900px) {
 
     .header {
         flex-wrap: wrap;
@@ -8,175 +8,213 @@
         border-radius: 0 0 20px 20px;
     }
 
-    .header__btn--dict { width: 130px; height: 48px; }
-    .header__btn--menu { width: 110px; height: 48px; }
+    .header__btn--dict {
+        width: auto;
+        min-width: 120px;
+        height: 48px;
+        padding: 0 14px;
+    }
+
+    .header__btn--menu {
+        width: auto;
+        min-width: 100px;
+        height: 48px;
+        padding: 0 14px;
+    }
 
     .header__select-wrap {
         order: 3;
         width: 100%;
     }
 
-    .header__select { height: 52px; border-radius: 16px; }
+    .header__select {
+        height: 52px;
+        border-radius: 16px;
+    }
 
+    .dict__panel {
+        width: calc(100vw - 40px);
+        max-width: 340px;
+    }
+
+    .menu__panel {
+        width: calc(100vw - 40px);
+        max-width: 300px;
+    }
+
+    /* ── Английский (index.html) ── */
     .main {
+        display: block;
         position: relative;
         overflow: hidden;
-        flex: 1;
     }
 
     .main__char {
         position: absolute;
         bottom: 0;
-        height: 55vw;
-        max-height: 380px;
-    }
-
-    .main__char--left { left: -10px; }
-    .main__char--right { right: -10px; }
-
-    .chat {
-        width: 100%;
         z-index: 1;
+        width: auto;
+        height: min(40vh, 300px);
+        max-width: 34vw;
+        object-fit: contain;
+        object-position: bottom center;
+        pointer-events: none;
+        margin: 0;
     }
 
-    .chat__messages {
+    .main__char--left {
+        left: 4px;
+    }
+
+    .main__char--right {
+        right: 4px;
+    }
+
+    .main .chat {
+        position: relative;
+        z-index: 2;
         width: 100%;
-        padding: 0 24px;
+        max-width: 100%;
+        padding-top: 12px;
     }
 
-    .chat__bubble--wolf {
-        width: 45vw;
-        max-width: 300px;
+    .main .chat__messages {
+        width: 100%;
+        max-width: 100%;
+        padding: 8px 72px 12px;
+        margin-top: 0;
+    }
+
+    .main .chat__msg .chat__bubble--wolf,
+    .main .chat__msg .chat__bubble--human {
+        max-width: min(72vw, 280px);
         font-size: 14px;
     }
 
-    .chat__bubble--human {
-        width: 42vw;
-        max-width: 280px;
-        font-size: 14px;
-    }
-
-    .chat__input-bar {
+    .main .chat__input-bar {
         width: 100%;
-        height: 90px;
+        max-width: 100%;
+        height: 88px;
         border-radius: 20px 20px 0 0;
     }
 
-    .chat__input-wrap { width: calc(100% - 32px); }
+    .main .chat__input-wrap {
+        width: calc(100% - 32px);
+    }
 
-    .chat__input { height: 44px; font-size: 15px; }
-    .chat__send-btn { width: 44px; height: 44px; }
-
-    .dict__panel { width: calc(100vw - 40px); max-width: 340px; }
-    .menu__panel { width: calc(100vw - 40px); max-width: 300px; }
-
-    /* index2 — немецкий */
+    /* ── Немецкий (index2.html) ── */
     .main2 {
-        grid-template-columns: 1fr minmax(240px, 1fr) 1fr;
-        column-gap: 12px;
-        padding: 0 8px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
     }
 
     .main2__char {
-        max-width: min(36vw, 260px);
-        max-height: 45vh;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        width: auto;
+        height: min(40vh, 300px);
+        max-width: 34vw;
+        margin: 0;
+        object-fit: contain;
+        object-position: bottom center;
+        pointer-events: none;
     }
 
     .main2__char--left {
-        margin-right: 4px;
+        left: 4px;
+        display: block;
     }
 
     .main2__char--right {
-        margin-left: 4px;
+        right: 4px;
     }
 
     .main2 .chat {
+        position: relative;
+        z-index: 2;
         width: 100%;
-        z-index: 1;
+        max-width: 100%;
+        margin: 0;
+        padding-top: 12px;
+    }
+
+    .main2 .chat__messages {
+        width: 100%;
+        max-width: 100%;
+        padding: 8px 72px 12px;
+        margin-top: 0;
+    }
+
+    .main2 .chat__msg .chat__bubble--wolf,
+    .main2 .chat__msg .chat__bubble--human {
+        max-width: min(72vw, 280px);
+        font-size: 14px;
+    }
+
+    .main2 .chat__input-bar {
+        width: 100%;
+        max-width: 100%;
+        height: 88px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .main2 .chat__input-wrap {
+        width: calc(100% - 32px);
+    }
+
+    .chat__input {
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .chat__send-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* ── Узкий телефон ── */
+@media (max-width: 480px) {
+
+    .main__char,
+    .main2__char {
+        height: min(36vh, 220px);
+        max-width: 38vw;
     }
 
     .main .chat__messages,
     .main2 .chat__messages {
-        width: 100%;
-        max-width: 100%;
-        padding: 2vh 24px 0;
-        margin-top: 0;
+        padding-left: 56px;
+        padding-right: 56px;
     }
 
-    .main .chat__bubble--wolf,
-    .main .chat__bubble--human,
-    .main2 .chat__bubble--wolf,
-    .main2 .chat__bubble--human {
-        width: 45vw;
-        max-width: 300px;
+    .main .chat__msg .chat__bubble--wolf,
+    .main .chat__msg .chat__bubble--human,
+    .main2 .chat__msg .chat__bubble--wolf,
+    .main2 .chat__msg .chat__bubble--human {
+        max-width: 80vw;
+        font-size: 13px;
+    }
+
+    .chat__input {
+        height: 40px;
         font-size: 14px;
     }
 
-    .main .chat__input-bar,
-    .main2 .chat__input-bar {
-        width: 100%;
-        height: 90px;
-        border-radius: 20px 20px 0 0;
+    .chat__send-btn {
+        width: 40px;
+        height: 40px;
     }
 
-    .main2 .chat__input-wrap { width: calc(100% - 32px); }
-}
-
-/* ── MOBILE: 480px ── */
-@media (max-width: 480px) {
-
-    .main__char {
-        height: 50vw;
-        max-height: 260px;
+    .home {
+        padding: 20px 12px;
+        gap: 20px;
     }
 
-    .chat__bubble--wolf {
-        width: 55vw;
-        max-width: 240px;
-        font-size: 13px;
-    }
-
-    .chat__bubble--human {
-        width: 50vw;
-        max-width: 220px;
-        font-size: 13px;
-    }
-
-    .chat__input { height: 40px; font-size: 14px; }
-    .chat__send-btn { width: 40px; height: 40px; }
-
-    .home { padding: 20px 12px; gap: 20px; }
-
-    .main2 {
+    .guide__cards {
         grid-template-columns: 1fr;
-    }
-
-    .main2__char--left {
-        display: none;
-    }
-
-    .main2__char--right {
-        grid-column: 1;
-        justify-self: end;
-        max-width: 55vw;
-        max-height: 200px;
-        margin-right: 8px;
-    }
-
-    .main2 .chat {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .main2 .chat__bubble--wolf {
-        width: 55vw;
-        max-width: 220px;
-        font-size: 13px;
-    }
-
-    .main2 .chat__bubble--human {
-        width: 50vw;
-        max-width: 200px;
-        font-size: 13px;
     }
 }
