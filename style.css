@@ -614,12 +614,19 @@ body {
 
 .main2__char {
     position: absolute;
-    right: -20px;
     bottom: 0;
     height: 55vh;
     object-fit: contain;
     object-position: bottom;
     pointer-events: none;
+}
+
+.main2__char--left {
+    left: -20px;
+}
+
+.main2__char--right {
+    right: -20px;
 }
 
 .chat__msg {
